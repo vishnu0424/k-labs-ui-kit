@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   Box,
@@ -17,25 +17,19 @@ import {
 
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import { SideBarContext } from "../../utils";
 // import { ColorModeContext } from "../../theme/theme";
 // import AccountSettings from "./AccountSettings";
-// import ClientLogo from "../../images/client-logo.png";
 // import ServiceStatusPopup from "./ServiceStatus/ServiceStatusPopup";
-const Header = ({ openSideMenu, onClickMenuIcon }) => {
+const Header = () => {
   const theme = useTheme();
+  const { drawerWidth, setDrawerWidth } = useContext(SideBarContext);
+  const openSideMenu = drawerWidth === 200;
 
+  const onClickMenuIcon = () => {
+    setDrawerWidth((prevState) => (prevState === 200 ? 56 : 200));
+  };
   // const colorMode = useContext(ColorModeContext);
-
-  // const [notification, setNotification] = useState(false);
-  // const [msg, setMsg] = useState("");
-  // const [aType, setAType] = useState("info");
-
-  // const handleCloseNotification = (event, reason) => {
-  //   if (reason === "clickaway") {
-  //     return;
-  //   }
-  //   setNotification(false);
-  // };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -63,22 +57,8 @@ const Header = ({ openSideMenu, onClickMenuIcon }) => {
           </Box>
         </Grid>
 
-        <Grid item sm={4} textAlign="center">
-          {/* <Typography
-            variant="h5"
-            marginBottom="0"
-            gutterBottom
-            component="div"
-          >
-            {t("DATA QUALITY GATEWAY")}
-          </Typography> */}
-        </Grid>
+        <Grid item sm={4} textAlign="center"></Grid>
         <Grid item sm={4} className="headerIcons">
-          {/* <Typography sx={{ minWidth: 30, fontSize: 25 }}>
-              <Badge badgeContent={4} color="success">
-                <NotificationsActiveOutlinedIcon />
-              </Badge>
-            </Typography> */}
           {/* <ServiceStatusPopup /> */}
           <Divider
             orientation="vertical"
