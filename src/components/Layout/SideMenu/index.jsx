@@ -12,8 +12,8 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
-import { SideBarContext } from "../../utils";
-
+import { SideBarContext } from "../../../utils";
+import "./sideMenu.css";
 const defaultDrawerWidth = 200;
 const openedMixin = (theme) => ({
   width: defaultDrawerWidth,
@@ -95,7 +95,9 @@ const SideMenu = ({ menuItems, darkLogo, lightLogo, logoIcon }) => {
       className="sidemenuCus"
     >
       <DrawerHeader />
-      <Box className="center">
+      <Box
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      >
         {openSideMenu ? (
           <img src={isDarkLogo} height="50px" alt="logo-notavailable" />
         ) : (

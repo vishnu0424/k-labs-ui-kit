@@ -1,0 +1,36 @@
+.sidemenuCus {
+  border-right: 0;
+  z-index: 2;
+}
+
+.sidemenuCus .MuiDrawer-paper {
+  z-index: 2;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+.sidemenuCus a span.MuiTypography-root {
+  font-weight: 300;
+}
+
+.sidemenuCus .MuiListItem-button .MuiListItemIcon-root {
+  min-width: 46px;
+}
+
+.sidemenuCus a.active {
+  color: #f9f9ff;
+}
+
+.sidemenuCus a.active .MuiTypography-root {
+  font-size: 14px;
+}
+
+.sidemenuCus a.active .MuiListItem-button {
+  background: transparent linear-gradient(91deg, #611eb6 25%, #66a2ee 100%);
+}
+
+.sidemenuCus a.active svg {
+  color: #f9f9ff;
+}

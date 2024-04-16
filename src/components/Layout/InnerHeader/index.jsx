@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Box, Paper } from "@mui/material";
-import { SideBarContext } from "../../utils";
+import { SideBarContext } from "../../../utils";
+import "./innerheader.css";
 
 const InnerHeader = ({ children }) => {
   const { drawerWidth } = useContext(SideBarContext);

@@ -13,19 +13,16 @@ import {
 } from "@mui/material";
 
 import { styled } from "@mui/material/styles";
-
 import {
   Menu as MenuIcon,
   ChevronLeft as ChevronLeftIcon,
   // NotificationsActiveOutlined as NotificationsIcon,
 } from "@mui/icons-material";
-// import Logo from "../../images/dq-gateway-logo.png";
 
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import { SideBarContext } from "../../utils";
-
-// import ServiceStatusPopup from "./ServiceStatus/ServiceStatusPopup";
+import { SideBarContext } from "../../../utils";
+import "./header.css";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -73,12 +70,12 @@ const Header = ({ colorMode, accountSettings }) => {
             alignItems="center"
           >
             <Grid item sm={4}>
-              <Box className="v-center">
+              <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box
                   sx={{
                     width: openSideMenu
                       ? `calc(200px - ${24}px)`
-                      : " fit-content",
+                      : "fit-content",
                   }}
                 >
                   <IconButton
@@ -99,7 +96,6 @@ const Header = ({ colorMode, accountSettings }) => {
 
             <Grid item sm={4} textAlign="center"></Grid>
             <Grid item sm={4} className="headerIcons">
-              {/* <ServiceStatusPopup /> */}
               <Divider
                 orientation="vertical"
                 variant="string"

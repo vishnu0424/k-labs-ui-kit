@@ -1,0 +1,29 @@
+.headerCus {
+  width: 100%;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.headerCus .MuiToolbar-root {
+  min-height: 52px;
+  color: #096eb6;
+}
+
+.headerCus .MuiButtonBase-root {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.headerCus .MuiTypography-h5 {
+  background: linear-gradient(to right, #2c65f4, #e73323);
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent;
+}
+
+.headerCus .headerIcons {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
