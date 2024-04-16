@@ -1,6 +1,6 @@
 {
   "name": "k-labs-kit",
-  "version": "0.0.10",
+  "version": "0.0.15",
   "description": "A very simple, highly customisable react top progressbar component.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

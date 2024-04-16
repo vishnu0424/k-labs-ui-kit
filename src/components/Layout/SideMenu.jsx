@@ -17,18 +17,15 @@ import {
   AllInclusiveOutlined as AllInclusiveIcon,
 } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
-
 import { useTranslation } from "react-i18next";
 import { SideBarContext } from "../../utils";
-
 // import whiteLogo from "../../images/dq-gateway-logo.png";
 // import darkLogo from "../../images/dq-gateway-logo-dark.png";
 // import Logo2 from "../../images/DQG - Logo-small.svg";
 
-const drawerWidth = 200;
-
+const defaultDrawerWidth = 200;
 const openedMixin = (theme) => ({
-  width: drawerWidth,
+  width: defaultDrawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -53,7 +50,7 @@ const closedMixin = (theme) => ({
 const DrawerStyled = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  width: drawerWidth,
+  width: defaultDrawerWidth,
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
@@ -79,6 +76,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
   minHeight: "52px !important",
 }));
+
 const SideMenuItem = ({ to, text, Icon }) => (
   <NavLink to={to} style={{ textDecoration: "none" }}>
     <ListItem button>
@@ -91,67 +89,56 @@ const SideMenuItem = ({ to, text, Icon }) => (
     </ListItem>
   </NavLink>
 );
+
+const menuItems = [
+  { to: "/", text: "side_bar_applications", Icon: BackupTableIcon },
+  { to: "/testcaseslist", text: "side_bar_testcases", Icon: FactCheckIcon },
+  { to: "/testsuites", text: "side_bar_testsuites", Icon: FactCheckIcon },
+  { to: "/agents", text: "side_bar_agents", Icon: AllInclusiveIcon },
+  { to: "/engines", text: "Engines", Icon: AllInclusiveIcon },
+  {
+    to: "/executionsreport?source=all",
+    text: "Execution Reports",
+    Icon: FactCheckIcon,
+  },
+  {
+    to: "/cicdpipeline",
+    text: "side_bar_cicdpipelines",
+    Icon: AllInclusiveIcon,
+  },
+  { to: "/scheduledtests", text: "side_bar_scheduletests", Icon: ScheduleIcon },
+];
+
 const SideMenu = () => {
   const theme = useTheme();
   const { t } = useTranslation();
-
   const { drawerWidth } = useContext(SideBarContext);
   const openSideMenu = drawerWidth === 200;
-  const menuItems = [
-    { to: "/", text: t("side_bar_applications"), Icon: BackupTableIcon },
-    {
-      to: "/testcaseslist",
-      text: t("side_bar_testcases"),
-      Icon: FactCheckIcon,
-    },
-    { to: "/testsuites", text: t("side_bar_testsuites"), Icon: FactCheckIcon },
-    { to: "/agents", text: t("side_bar_agents"), Icon: AllInclusiveIcon },
-    { to: "/engines", text: t("Engines"), Icon: AllInclusiveIcon },
-    {
-      to: "/executionsreport?source=all",
-      text: "Execution Reports",
-      Icon: FactCheckIcon,
-    },
-    {
-      to: "/cicdpipeline",
-      text: t("side_bar_cicdpipelines"),
-      Icon: AllInclusiveIcon,
-    },
-    {
-      to: "/scheduledtests",
-      text: t("side_bar_scheduletests"),
-      Icon: ScheduleIcon,
-    },
-  ];
-
-  // const Logo1 = theme?.palette?.mode === "dark" ? darkLogo : whiteLogo;
 
   return (
-    <Box>
-      <DrawerStyled
-        variant="permanent"
-        open={openSideMenu}
-        className="sidemenuCus"
-      >
-        <DrawerHeader />
-        <Box className="center">
-          {/* {openSideMenu ? (
+    <DrawerStyled
+      variant="permanent"
+      open={openSideMenu}
+      className="sidemenuCus"
+    >
+      <DrawerHeader />
+      <Box className="center">
+        {/* {openSideMenu ? (
           <img src={Logo1} height="50px" alt="logo-notavailable" />
         ) : (
           <img src={Logo2} height="50px" alt="logo-notavailable" />
         )} */}
-        </Box>
-        <Divider sx={{ my: 1 }} />
-        {menuItems.map((item, index) => (
-          <SideMenuItem
-            key={index}
-            to={item.to}
-            text={item.text}
-            Icon={item.Icon}
-          />
-        ))}
-      </DrawerStyled>
-    </Box>
+      </Box>
+      <Divider sx={{ my: 1 }} />
+      {menuItems.map((item, index) => (
+        <SideMenuItem
+          key={index}
+          to={item.to}
+          text={t(item.text)}
+          Icon={item.Icon}
+        />
+      ))}
+    </DrawerStyled>
   );
 };
 
