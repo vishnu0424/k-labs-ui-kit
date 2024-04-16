@@ -11,10 +11,11 @@ import {
   Drawer as MuiDrawer,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useTranslation } from "react-i18next";
 import { SideBarContext } from "../../../utils";
 import "./sideMenu.css";
+
 const defaultDrawerWidth = 200;
+
 const openedMixin = (theme) => ({
   width: defaultDrawerWidth,
   transition: theme.transitions.create("width", {
@@ -76,14 +77,13 @@ const SideMenuItem = ({ to, text, Icon }) => (
           <Icon />
         </ListItemIcon>
       </Tooltip>
-      <ListItemText primary={text} color="white" />
+      <ListItemText primary={text} color="inherit" />
     </ListItem>
   </NavLink>
 );
 
 const SideMenu = ({ menuItems, darkLogo, lightLogo, logoIcon }) => {
   const theme = useTheme();
-  const { t } = useTranslation();
   const { drawerWidth } = useContext(SideBarContext);
   const openSideMenu = drawerWidth === 200;
   const isDarkLogo = theme?.palette?.mode === "dark" ? lightLogo : darkLogo;
@@ -98,18 +98,18 @@ const SideMenu = ({ menuItems, darkLogo, lightLogo, logoIcon }) => {
       <Box
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
-        {openSideMenu ? (
-          <img src={isDarkLogo} height="50px" alt="logo-notavailable" />
-        ) : (
-          <img src={logoIcon} height="50px" alt="logo-notavailable" />
-        )}
+        <img
+          src={openSideMenu ? isDarkLogo : logoIcon}
+          height="50px"
+          alt="logo-notavailable"
+        />
       </Box>
       <Divider sx={{ my: 1 }} />
       {menuItems.map((item, index) => (
         <SideMenuItem
           key={index}
           to={item.to}
-          text={t(item.text)}
+          text={item.text}
           Icon={item.Icon}
         />
       ))}

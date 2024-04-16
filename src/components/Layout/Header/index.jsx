@@ -1,24 +1,20 @@
 import React, { useContext } from "react";
-
 import {
   Box,
   Grid,
   IconButton,
   Tooltip,
   useTheme,
-  Divider,
   AppBar as MuiAppBar,
   Toolbar,
   Paper,
+  Divider,
 } from "@mui/material";
-
 import { styled } from "@mui/material/styles";
 import {
   Menu as MenuIcon,
   ChevronLeft as ChevronLeftIcon,
-  // NotificationsActiveOutlined as NotificationsIcon,
 } from "@mui/icons-material";
-
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import { SideBarContext } from "../../../utils";
@@ -41,7 +37,8 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
-const Header = ({ colorMode, accountSettings }) => {
+
+const Header = ({ colorMode, accountSettings, children }) => {
   const theme = useTheme();
   const { drawerWidth, setDrawerWidth } = useContext(SideBarContext);
   const openSideMenu = drawerWidth === 200;
@@ -95,14 +92,15 @@ const Header = ({ colorMode, accountSettings }) => {
             </Grid>
 
             <Grid item sm={4} textAlign="center"></Grid>
+
             <Grid item sm={4} className="headerIcons">
+              {children}
               <Divider
                 orientation="vertical"
                 variant="string"
                 flexItem
                 style={{ backgroundColor: "#ccc", width: 2 }}
               />
-
               <Tooltip
                 arrow
                 placement="top"
@@ -123,7 +121,6 @@ const Header = ({ colorMode, accountSettings }) => {
                   )}
                 </IconButton>
               </Tooltip>
-
               {accountSettings}
             </Grid>
           </Grid>

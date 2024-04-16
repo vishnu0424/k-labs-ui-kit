@@ -4,46 +4,48 @@ import terser from "@rollup/plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { babel } from "@rollup/plugin-babel";
-// import { uglify } from "rollup-plugin-uglify";
-// import uglify from "@lopatnov/rollup-plugin-uglify";
-// const packageJson = require('./package.json')
 
-export default [
-  {
-    input: "index.js", // Corrected the entry file to index.js
-    output: [
-      {
-        file: "dist/index.js",
-        format: "cjs",
-        sourcemap: false,
-      },
-      {
-        file: "dist/index.es.js",
-        format: "es",
-        exports: "named",
-      },
-    ],
-    external: ["react", "react-dom"],
-    plugins: [
-      peerDepsExternal(),
-      nodeResolve({
-        extensions: [".js", ".jsx"],
-      }),
-      commonjs(),
-      terser(),
-      postcss({
-        plugins: [],
-        minimize: true,
-        extract: "style.css",
-      }),
-      babel({
-        // presets: ["@babel/preset-env", "@babel/preset-react"],
-        // extensions: ['.js', '.jsx']
-        configFile: "./.babelrc",
-        babelHelpers: "bundled",
-        exclude: "node_modules/**",
-      }),
-      // uglify()
-    ],
-  },
+// Define the list of Material-UI modules to ignore
+const ignoredModules = [
+  "@mui/material",
+  "@mui/icons-material",
+  "react-router-dom",
 ];
+
+export default {
+  input: "index.js",
+  output: [
+    {
+      file: "dist/index.js",
+      format: "cjs",
+      sourcemap: false,
+    },
+    {
+      file: "dist/index.es.js",
+      format: "es",
+      exports: "named",
+    },
+  ],
+  external: (id) => {
+    // Check if the module ID matches any of the ignored modules
+    return ignoredModules.some((moduleName) => id.startsWith(moduleName));
+  },
+  plugins: [
+    peerDepsExternal(),
+    nodeResolve({
+      extensions: [".js", ".jsx"],
+    }),
+    commonjs(),
+    terser(),
+    postcss({
+      plugins: [],
+      minimize: true,
+      extract: "style.css",
+    }),
+    babel({
+      configFile: "./.babelrc",
+      babelHelpers: "bundled",
+      exclude: "node_modules/**",
+    }),
+  ],
+};
