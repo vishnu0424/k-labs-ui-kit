@@ -24,8 +24,7 @@ import {
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import { SideBarContext } from "../../utils";
-// import { ColorModeContext } from "../../theme/theme";
-// import AccountSettings from "./AccountSettings";
+
 // import ServiceStatusPopup from "./ServiceStatus/ServiceStatusPopup";
 
 const AppBar = styled(MuiAppBar, {
@@ -45,7 +44,7 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
-const Header = () => {
+const Header = ({ colorMode, accountSettings }) => {
   const theme = useTheme();
   const { drawerWidth, setDrawerWidth } = useContext(SideBarContext);
   const openSideMenu = drawerWidth === 200;
@@ -53,7 +52,6 @@ const Header = () => {
   const onClickMenuIcon = () => {
     setDrawerWidth((prevState) => (prevState === 200 ? 56 : 200));
   };
-  // const colorMode = useContext(ColorModeContext);
 
   return (
     <AppBar
@@ -120,7 +118,7 @@ const Header = () => {
                     background: "linear-gradient(45deg, #611EB6, #66A2EE)",
                     color: "#fff",
                   }}
-                  // onClick={colorMode.toggleColorMode}
+                  onClick={colorMode.toggleColorMode}
                 >
                   {theme?.palette?.mode === "dark" ? (
                     <DarkModeOutlinedIcon fontSize="small" />
@@ -130,7 +128,7 @@ const Header = () => {
                 </IconButton>
               </Tooltip>
 
-              {/* <AccountSettings /> */}
+              {accountSettings}
             </Grid>
           </Grid>
         </Box>

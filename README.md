@@ -1,4 +1,4 @@
-# NProgress
+<!-- # NProgress
 
 A very simple, highly customisable react top progressbar component.
 
@@ -108,4 +108,4 @@ Specify this option to change the parent container.
 
 ```js
 <NProgress configure={{ parent: "#container" }} />
-```
+``` -->

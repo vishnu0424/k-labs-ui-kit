@@ -10,18 +10,9 @@ import {
   Divider,
   Drawer as MuiDrawer,
 } from "@mui/material";
-import {
-  BackupTableOutlined as BackupTableIcon,
-  FactCheckOutlined as FactCheckIcon,
-  ScheduleOutlined as ScheduleIcon,
-  AllInclusiveOutlined as AllInclusiveIcon,
-} from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import { SideBarContext } from "../../utils";
-// import whiteLogo from "../../images/dq-gateway-logo.png";
-// import darkLogo from "../../images/dq-gateway-logo-dark.png";
-// import Logo2 from "../../images/DQG - Logo-small.svg";
 
 const defaultDrawerWidth = 200;
 const openedMixin = (theme) => ({
@@ -90,30 +81,12 @@ const SideMenuItem = ({ to, text, Icon }) => (
   </NavLink>
 );
 
-const menuItems = [
-  { to: "/", text: "side_bar_applications", Icon: BackupTableIcon },
-  { to: "/testcaseslist", text: "side_bar_testcases", Icon: FactCheckIcon },
-  { to: "/testsuites", text: "side_bar_testsuites", Icon: FactCheckIcon },
-  { to: "/agents", text: "side_bar_agents", Icon: AllInclusiveIcon },
-  { to: "/engines", text: "Engines", Icon: AllInclusiveIcon },
-  {
-    to: "/executionsreport?source=all",
-    text: "Execution Reports",
-    Icon: FactCheckIcon,
-  },
-  {
-    to: "/cicdpipeline",
-    text: "side_bar_cicdpipelines",
-    Icon: AllInclusiveIcon,
-  },
-  { to: "/scheduledtests", text: "side_bar_scheduletests", Icon: ScheduleIcon },
-];
-
-const SideMenu = () => {
+const SideMenu = ({ menuItems, darkLogo, lightLogo, logoIcon }) => {
   const theme = useTheme();
   const { t } = useTranslation();
   const { drawerWidth } = useContext(SideBarContext);
   const openSideMenu = drawerWidth === 200;
+  const isDarkLogo = theme?.palette?.mode === "dark" ? lightLogo : darkLogo;
 
   return (
     <DrawerStyled
@@ -123,11 +96,11 @@ const SideMenu = () => {
     >
       <DrawerHeader />
       <Box className="center">
-        {/* {openSideMenu ? (
-          <img src={Logo1} height="50px" alt="logo-notavailable" />
+        {openSideMenu ? (
+          <img src={isDarkLogo} height="50px" alt="logo-notavailable" />
         ) : (
-          <img src={Logo2} height="50px" alt="logo-notavailable" />
-        )} */}
+          <img src={logoIcon} height="50px" alt="logo-notavailable" />
+        )}
       </Box>
       <Divider sx={{ my: 1 }} />
       {menuItems.map((item, index) => (

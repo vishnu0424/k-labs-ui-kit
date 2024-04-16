@@ -1,6 +1,6 @@
 {
   "name": "k-labs-kit",
-  "version": "0.0.15",
+  "version": "0.0.18",
   "description": "A very simple, highly customisable react top progressbar component.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -11,7 +11,7 @@
   },
   "author": {
     "name": "Arjun Sharma",
-    "url": "https://github.com/imarjunshrma"
+    "url": "https://github.com/"
   },
   "license": "MIT",
   "devDependencies": {
@@ -45,32 +45,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/imarjunshrma/react-nprogress.git"
+    "url": "https://github.com"
   },
-  "homepage": "https://github.com/imarjunshrma/react-nprogress.git",
+  "homepage": "https://github.com/",
   "keywords": [
     "react component",
-    "react-loading",
-    "react-loader",
-    "animated loader",
-    "react youtube like loader",
-    "react",
-    "animated react loader",
-    "react-animated-loader",
-    "react-top-loader",
-    "react",
-    "reactjs",
-    "react-component",
-    "loading-bar",
-    "youtube-loading-bar",
-    "loading",
-    "react-loading-bar",
-    "redux-loading-bar",
-    "loading bar",
-    "smooth",
-    "animated",
-    "youtube loading bar",
-    "top loading bar",
-    "component"
+    "Header",
+    "Sidebar"
   ]
 }
