@@ -1,10 +1,10 @@
 .sidemenuCus {
   border-right: 0;
-  z-index: 2;
+  z-index: 1;
 }
 
 .sidemenuCus .MuiDrawer-paper {
-  z-index: 2;
+  z-index: 1;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.05)

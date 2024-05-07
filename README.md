@@ -1,6 +1,6 @@
 <!-- # NProgress
 
-A very simple, highly customisable react top progressbar component.
+A very simple, highly customisable react component.
 
 ## Installation
 

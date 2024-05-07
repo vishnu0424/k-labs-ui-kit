@@ -1,7 +1,7 @@
 {
   "name": "k-labs-kit",
-  "version": "0.0.21",
-  "description": "A very simple, highly customisable react top progressbar component.",
+  "version": "0.0.23",
+  "description": "A very simple component.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
-    "name": "Arjun Sharma",
+    "name": "vishnu",
     "url": "https://github.com/"
   },
   "license": "MIT",
